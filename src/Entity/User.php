@@ -36,7 +36,8 @@ class User implements UserInterface
 
     /**
      * @Assert\NotBlank()
-     * @Assert\Length(max=4096)
+     * @Assert\Length(min="8" , minMessage="votre mot de passe doit faire au minimum 8 caractères")
+     * @Assert\EqualTo(propertyPath="password")
      */
     private $plainPassword;
 
@@ -45,6 +46,8 @@ class User implements UserInterface
      * the password, but this works well with bcrypt.
      *
      * @ORM\Column(type="string", length=64)
+     * @Assert\Length(min="8" , minMessage="votre mot de passe doit faire au minimum 8 caractères")
+     * @Assert\EqualTo(propertyPath="plainPassword")
      */
     private $password;
 
